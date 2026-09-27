@@ -1,8 +1,6 @@
 import React from 'react';
 import { AppProvider, useApp } from './context/AppContext';
-import { GovernmentHeader } from './components/common/GovernmentHeader';
 import { SubNav } from './components/common/SubNav';
-import { GovernmentFooter } from './components/common/GovernmentFooter';
 import { SystemArchitectureModal } from './components/common/SystemArchitectureModal';
 import { HelpModal } from './components/common/HelpModal';
 
@@ -71,10 +69,7 @@ const MainAppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-900">
-      {/* Government Portal Top Header */}
-      <GovernmentHeader />
-
+    <div className="h-screen flex flex-col bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-900 overflow-hidden">
       {/* Portal Horizontal SubNav */}
       <SubNav />
 
@@ -95,10 +90,7 @@ const MainAppContent: React.FC = () => {
       )}
 
       {/* Page Content Viewport */}
-      <main className="flex-1 w-full">{renderActiveRoute()}</main>
-
-      {/* Government Footer */}
-      <GovernmentFooter />
+      <main className="flex-1 w-full overflow-hidden">{renderActiveRoute()}</main>
 
       {/* System Architecture Drawer / Modal */}
       <SystemArchitectureModal />

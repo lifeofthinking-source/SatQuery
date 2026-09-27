@@ -37,7 +37,7 @@ export const FloatingQueryChatbot: React.FC<FloatingQueryChatbotProps> = ({
     showNotification
   } = useApp();
 
-  const [isMinimized, setIsMinimized] = useState<boolean>(false);
+  const [isMinimized, setIsMinimized] = useState<boolean>(true);
   const [inputQuery, setInputQuery] = useState<string>('');
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
