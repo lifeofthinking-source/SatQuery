@@ -45,7 +45,7 @@ interface RealTimeGoogleMapProps {
 
 export const RealTimeGoogleMap: React.FC<RealTimeGoogleMapProps> = ({
   onPolygonCreated,
-  showChangeClusters = true,
+  showChangeClusters = false,
   onReticleMove,
   onReticleClick,
   setNavigateRef,
@@ -316,9 +316,6 @@ export const RealTimeGoogleMap: React.FC<RealTimeGoogleMapProps> = ({
         }
       }
     });
-
-    // Render Preset Leaflet Polygon
-    renderPresetLeafletAOI(map, 'cheyyur');
 
     // Trigger map resize after DOM mount
     setTimeout(() => {
