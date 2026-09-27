@@ -1,0 +1,6 @@
+{
+  "name": "SatQuery AI – Earth Observation Intelligence Platform",
+  "description": "An Interactive Vision-Language Assistant for Multimodal Remote Sensing Image Analysis through Text Queries. Smart India Hackathon 2026 prototype for evidence-grounded satellite analysis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
