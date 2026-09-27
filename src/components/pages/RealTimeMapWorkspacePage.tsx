@@ -150,43 +150,43 @@ export const RealTimeMapWorkspacePage: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full h-[calc(100vh-80px)] min-h-[640px] flex flex-col bg-slate-950 overflow-hidden select-none">
-      {/* Top Portal Navigation Bar (Identical to Prototype Image) */}
-      <div className="h-11 bg-slate-900 border-b border-slate-800 px-4 flex items-center justify-between text-xs text-slate-300 z-30 shrink-0">
+    <div className="relative w-full h-full flex flex-col bg-slate-100 overflow-hidden select-none">
+      {/* Top Portal Navigation Bar — Light Theme */}
+      <div className="h-11 bg-white border-b border-slate-200 px-4 flex items-center justify-between text-xs text-slate-600 z-30 shrink-0 shadow-sm">
         {/* Left: Branding & Nav Links */}
         <div className="flex items-center gap-5">
-          <div className="flex items-center gap-2 text-white font-bold tracking-wide">
+          <div className="flex items-center gap-2 text-slate-800 font-bold tracking-wide">
             <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-xs">
               <Globe className="w-3 h-3" />
             </div>
-            <span className="text-xs font-extrabold tracking-wider font-sans">
+            <span className="text-xs font-extrabold tracking-wider font-sans text-slate-800">
               EARTH OBSERVATION PORTAL
             </span>
           </div>
 
-          <div className="hidden lg:flex items-center gap-1.5 text-xs text-slate-300">
-            <button onClick={() => setCurrentRoute('landing')} className="px-2 py-0.5 rounded hover:text-white transition-colors">Home</button>
-            <button onClick={() => setCurrentRoute('data-validation')} className="px-2 py-0.5 rounded hover:text-white transition-colors">Visual Tools</button>
-            <button onClick={() => setCurrentRoute('tool-selection')} className="px-2 py-0.5 rounded hover:text-white transition-colors">CrossMatch Tools</button>
-            <button onClick={() => setCurrentRoute('previous-analyses')} className="px-2 py-0.5 rounded hover:text-white transition-colors">Data Archives</button>
+          <div className="hidden lg:flex items-center gap-1.5 text-xs text-slate-500">
+            <button onClick={() => setCurrentRoute('landing')} className="px-2 py-0.5 rounded hover:text-slate-900 hover:bg-slate-100 transition-colors">Home</button>
+            <button onClick={() => setCurrentRoute('data-validation')} className="px-2 py-0.5 rounded hover:text-slate-900 hover:bg-slate-100 transition-colors">Visual Tools</button>
+            <button onClick={() => setCurrentRoute('tool-selection')} className="px-2 py-0.5 rounded hover:text-slate-900 hover:bg-slate-100 transition-colors">CrossMatch Tools</button>
+            <button onClick={() => setCurrentRoute('previous-analyses')} className="px-2 py-0.5 rounded hover:text-slate-900 hover:bg-slate-100 transition-colors">Data Archives</button>
             <button className="px-2.5 py-1 rounded bg-blue-600 text-white font-semibold flex items-center gap-1 shadow-xs">
               <Sparkles className="w-3 h-3" />
               <span>SatQuery Workspace</span>
             </button>
-            <button onClick={() => showNotification('GeoChat Live Assistant Active (Floating Bottom-Right)')} className="px-2.5 py-1 rounded bg-amber-600/90 text-white font-semibold flex items-center gap-1 shadow-xs">
+            <button onClick={() => showNotification('Orbital Chat Live Assistant Active (Floating Bottom-Right)')} className="px-2.5 py-1 rounded bg-amber-500 text-white font-semibold flex items-center gap-1 shadow-xs">
               <MessageSquare className="w-3 h-3" />
-              <span>GeoChat (Live)</span>
+              <span>Orbital Chat</span>
             </button>
           </div>
         </div>
 
         {/* Right: Security & User Controls */}
         <div className="flex items-center gap-3 text-xs">
-          <span className="font-mono text-[9px] text-slate-400 bg-slate-800/90 px-2 py-0.5 rounded border border-slate-700">
+          <span className="font-mono text-[9px] text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-300">
             [UNCLASSIFIED // FOUO]
           </span>
-          <span className="text-slate-300 text-xs">Guest Access</span>
-          <button onClick={() => setCurrentRoute('login')} className="bg-slate-800 hover:bg-slate-700 text-white px-2.5 py-1 rounded text-xs font-semibold flex items-center gap-1.5 border border-slate-700">
+          <span className="text-slate-500 text-xs">Guest Access</span>
+          <button onClick={() => setCurrentRoute('login')} className="bg-white hover:bg-slate-50 text-slate-700 px-2.5 py-1 rounded text-xs font-semibold flex items-center gap-1.5 border border-slate-300 shadow-xs">
             <User className="w-3 h-3" />
             <span>Sign In</span>
           </button>

@@ -99,31 +99,31 @@ export const ControlPanelSidebar: React.FC<ControlPanelSidebarProps> = ({
       <div className="absolute top-16 left-0 z-30">
         <button
           onClick={onToggle}
-          className="bg-slate-900 hover:bg-slate-800 text-white p-2.5 rounded-r-lg border-r border-y border-slate-700 shadow-2xl flex items-center gap-1.5 text-xs font-bold transition-all group"
+          className="bg-white hover:bg-slate-50 text-slate-700 p-2.5 rounded-r-lg border-r border-y border-slate-300 shadow-md flex items-center gap-1.5 text-xs font-bold transition-all group"
           title="Open Control Panel"
         >
           <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-          <Sliders className="w-4 h-4 text-blue-400 group-hover:rotate-45 transition-transform" />
-          <span className="hidden sm:inline font-mono tracking-wider">CONTROL PANEL</span>
+          <Sliders className="w-4 h-4 text-blue-600 group-hover:rotate-45 transition-transform" />
+          <span className="hidden sm:inline font-mono tracking-wider text-slate-700">CONTROL PANEL</span>
         </button>
       </div>
     );
   }
 
   return (
-    <div className="w-72 md:w-80 shrink-0 bg-slate-900 text-slate-100 border-r border-slate-800 shadow-2xl flex flex-col h-full z-20 overflow-y-auto font-sans select-none transition-all">
+    <div className="w-72 md:w-80 shrink-0 bg-white text-slate-900 border-r border-slate-200 shadow-md flex flex-col h-full z-20 overflow-y-auto font-sans select-none transition-all">
       {/* Header Bar */}
-      <div className="bg-slate-950 px-4 py-2.5 flex items-center justify-between border-b border-slate-800 shrink-0 sticky top-0 z-20">
+      <div className="bg-white px-4 py-2.5 flex items-center justify-between border-b border-slate-200 shrink-0 sticky top-0 z-20 shadow-sm">
         <div className="flex items-center gap-2">
-          <Sliders className="w-4 h-4 text-blue-400" />
-          <h2 className="text-xs font-bold tracking-wider uppercase font-mono text-white">
+          <Sliders className="w-4 h-4 text-blue-600" />
+          <h2 className="text-xs font-bold tracking-wider uppercase font-mono text-slate-800">
             Control Panel
           </h2>
         </div>
         {onToggle && (
           <button
             onClick={onToggle}
-            className="text-slate-400 hover:text-white p-1 rounded hover:bg-slate-800"
+            className="text-slate-400 hover:text-slate-700 p-1 rounded hover:bg-slate-100"
             title="Collapse Control Panel"
           >
             <ChevronLeft className="w-4 h-4" />
@@ -133,13 +133,13 @@ export const ControlPanelSidebar: React.FC<ControlPanelSidebarProps> = ({
 
       <div className="p-3 space-y-3 flex-1 text-xs">
         {/* Accordion 1: Find by Name */}
-        <div className="border border-slate-800 rounded bg-slate-950/60 overflow-hidden">
+        <div className="border border-slate-200 rounded bg-white overflow-hidden shadow-xs">
           <button
             onClick={() => toggleSection('findByName')}
-            className="w-full px-3 py-2 bg-slate-900/90 text-left flex items-center justify-between font-semibold text-slate-200 hover:bg-slate-800 transition-colors"
+            className="w-full px-3 py-2 bg-slate-50 text-left flex items-center justify-between font-semibold text-slate-700 hover:bg-slate-100 transition-colors"
           >
             <span className="flex items-center gap-2 font-mono text-[11px]">
-              <Search className="w-3.5 h-3.5 text-blue-400" />
+              <Search className="w-3.5 h-3.5 text-blue-500" />
               <span>Find by Name</span>
             </span>
             {sectionOpen.findByName ? <ChevronUp className="w-3.5 h-3.5 text-slate-400" /> : <ChevronDown className="w-3.5 h-3.5 text-slate-400" />}
@@ -152,11 +152,11 @@ export const ControlPanelSidebar: React.FC<ControlPanelSidebarProps> = ({
                 value={searchName}
                 onChange={e => setSearchName(e.target.value)}
                 placeholder="e.g., Cheyyur, Amritsar, Delhi"
-                className="w-full bg-slate-900 border border-slate-700 rounded px-2.5 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
+                className="w-full bg-white border border-slate-300 rounded px-2.5 py-1.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-100"
               />
               <button
                 type="submit"
-                className="w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-1.5 px-3 rounded text-xs transition-colors shadow-xs"
+                className="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-1.5 px-3 rounded text-xs transition-colors shadow-xs"
               >
                 Resolve Target
               </button>
@@ -165,13 +165,13 @@ export const ControlPanelSidebar: React.FC<ControlPanelSidebarProps> = ({
         </div>
 
         {/* Accordion 2: Spatial Parameters */}
-        <div className="border border-slate-800 rounded bg-slate-950/60 overflow-hidden">
+        <div className="border border-slate-200 rounded bg-white overflow-hidden shadow-xs">
           <button
             onClick={() => toggleSection('spatialParams')}
-            className="w-full px-3 py-2 bg-slate-900/90 text-left flex items-center justify-between font-semibold text-slate-200 hover:bg-slate-800 transition-colors"
+            className="w-full px-3 py-2 bg-slate-50 text-left flex items-center justify-between font-semibold text-slate-700 hover:bg-slate-100 transition-colors"
           >
             <span className="flex items-center gap-2 font-mono text-[11px]">
-              <Crosshair className="w-3.5 h-3.5 text-amber-400" />
+              <Crosshair className="w-3.5 h-3.5 text-amber-500" />
               <span>Spatial Parameters</span>
             </span>
             {sectionOpen.spatialParams ? <ChevronUp className="w-3.5 h-3.5 text-slate-400" /> : <ChevronDown className="w-3.5 h-3.5 text-slate-400" />}
@@ -180,40 +180,40 @@ export const ControlPanelSidebar: React.FC<ControlPanelSidebarProps> = ({
           {sectionOpen.spatialParams && (
             <form onSubmit={handleUpdateView} className="p-3 space-y-2.5">
               <div className="grid grid-cols-2 gap-2 items-center">
-                <label className="text-[11px] text-slate-400 font-mono">LAT (deg)</label>
+                <label className="text-[11px] text-slate-500 font-mono">LAT (deg)</label>
                 <input
                   type="text"
                   value={inputLat}
                   onChange={e => setInputLat(e.target.value)}
-                  className="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-xs text-white font-mono text-right focus:outline-none focus:border-blue-500"
+                  className="bg-white border border-slate-300 rounded px-2 py-1 text-xs text-slate-900 font-mono text-right focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-100"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-2 items-center">
-                <label className="text-[11px] text-slate-400 font-mono">LON (deg)</label>
+                <label className="text-[11px] text-slate-500 font-mono">LON (deg)</label>
                 <input
                   type="text"
                   value={inputLng}
                   onChange={e => setInputLng(e.target.value)}
-                  className="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-xs text-white font-mono text-right focus:outline-none focus:border-blue-500"
+                  className="bg-white border border-slate-300 rounded px-2 py-1 text-xs text-slate-900 font-mono text-right focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-100"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-2 items-center">
-                <label className="text-[11px] text-slate-400 font-mono">Scale (z)</label>
+                <label className="text-[11px] text-slate-500 font-mono">Scale (z)</label>
                 <input
                   type="number"
                   min="4"
                   max="19"
                   value={inputZoom}
                   onChange={e => setInputZoom(e.target.value)}
-                  className="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-xs text-white font-mono text-right focus:outline-none focus:border-blue-500"
+                  className="bg-white border border-slate-300 rounded px-2 py-1 text-xs text-slate-900 font-mono text-right focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-100"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold py-1.5 px-3 rounded text-xs transition-colors"
+                className="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-semibold py-1.5 px-3 rounded text-xs transition-colors"
               >
                 Update View
               </button>
@@ -222,13 +222,13 @@ export const ControlPanelSidebar: React.FC<ControlPanelSidebarProps> = ({
         </div>
 
         {/* Accordion 3: Active Overlays */}
-        <div className="border border-slate-800 rounded bg-slate-950/60 overflow-hidden">
+        <div className="border border-slate-200 rounded bg-white overflow-hidden shadow-xs">
           <button
             onClick={() => toggleSection('activeOverlays')}
-            className="w-full px-3 py-2 bg-slate-900/90 text-left flex items-center justify-between font-semibold text-slate-200 hover:bg-slate-800 transition-colors"
+            className="w-full px-3 py-2 bg-slate-50 text-left flex items-center justify-between font-semibold text-slate-700 hover:bg-slate-100 transition-colors"
           >
             <span className="flex items-center gap-2 font-mono text-[11px]">
-              <Layers className="w-3.5 h-3.5 text-cyan-400" />
+              <Layers className="w-3.5 h-3.5 text-cyan-600" />
               <span>Active Overlays</span>
             </span>
             {sectionOpen.activeOverlays ? <ChevronUp className="w-3.5 h-3.5 text-slate-400" /> : <ChevronDown className="w-3.5 h-3.5 text-slate-400" />}
@@ -236,32 +236,32 @@ export const ControlPanelSidebar: React.FC<ControlPanelSidebarProps> = ({
 
           {sectionOpen.activeOverlays && (
             <div className="p-3 space-y-2 text-xs">
-              <label className="flex items-center gap-2 cursor-pointer text-slate-300 hover:text-white">
+              <label className="flex items-center gap-2 cursor-pointer text-slate-600 hover:text-slate-900">
                 <input
                   type="checkbox"
                   checked={overlays.osmVector}
                   onChange={e => setOverlays(prev => ({ ...prev, osmVector: e.target.checked }))}
-                  className="rounded bg-slate-900 border-slate-700 text-blue-600 focus:ring-0"
+                  className="rounded border-slate-300 text-blue-600 focus:ring-0"
                 />
                 <span>OSM Vector Base</span>
               </label>
 
-              <label className="flex items-center gap-2 cursor-pointer text-slate-300 hover:text-white">
+              <label className="flex items-center gap-2 cursor-pointer text-slate-600 hover:text-slate-900">
                 <input
                   type="checkbox"
                   checked={overlays.highResOptical}
                   onChange={e => setOverlays(prev => ({ ...prev, highResOptical: e.target.checked }))}
-                  className="rounded bg-slate-900 border-slate-700 text-emerald-600 focus:ring-0"
+                  className="rounded border-slate-300 text-emerald-600 focus:ring-0"
                 />
-                <span className="font-semibold text-emerald-400">High-Res Optical (Esri)</span>
+                <span className="font-semibold text-emerald-700">High-Res Optical (Esri)</span>
               </label>
 
-              <div className="pt-2 border-t border-slate-800/80">
-                <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-1.5">
+              <div className="pt-2 border-t border-slate-100">
+                <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-1.5">
                   Live Telemetry (NASA GIBS)
                 </div>
 
-                <label className="flex items-center gap-2 cursor-pointer text-slate-300 hover:text-white py-0.5">
+                <label className="flex items-center gap-2 cursor-pointer text-slate-600 hover:text-slate-900 py-0.5">
                   <input
                     type="checkbox"
                     checked={overlays.viirsNight}
@@ -269,12 +269,12 @@ export const ControlPanelSidebar: React.FC<ControlPanelSidebarProps> = ({
                       setOverlays(prev => ({ ...prev, viirsNight: e.target.checked }));
                       showNotification(e.target.checked ? 'Enabled VIIRS Nighttime Radiance' : 'Disabled VIIRS Overlay');
                     }}
-                    className="rounded bg-slate-900 border-slate-700 text-amber-500 focus:ring-0"
+                    className="rounded border-slate-300 text-amber-500 focus:ring-0"
                   />
                   <span>VIIRS Earth at Night</span>
                 </label>
 
-                <label className="flex items-center gap-2 cursor-pointer text-slate-300 hover:text-white py-0.5">
+                <label className="flex items-center gap-2 cursor-pointer text-slate-600 hover:text-slate-900 py-0.5">
                   <input
                     type="checkbox"
                     checked={overlays.modisNdvi}
@@ -282,7 +282,7 @@ export const ControlPanelSidebar: React.FC<ControlPanelSidebarProps> = ({
                       setOverlays(prev => ({ ...prev, modisNdvi: e.target.checked }));
                       showNotification(e.target.checked ? 'Enabled MODIS Vegetation Index' : 'Disabled MODIS Overlay');
                     }}
-                    className="rounded bg-slate-900 border-slate-700 text-green-500 focus:ring-0"
+                    className="rounded border-slate-300 text-green-600 focus:ring-0"
                   />
                   <span>MODIS NDVI (Vegetation)</span>
                 </label>
@@ -292,13 +292,13 @@ export const ControlPanelSidebar: React.FC<ControlPanelSidebarProps> = ({
         </div>
 
         {/* Accordion 4: Saved Targets (Wishlist) */}
-        <div className="border border-slate-800 rounded bg-slate-950/60 overflow-hidden">
+        <div className="border border-slate-200 rounded bg-white overflow-hidden shadow-xs">
           <button
             onClick={() => toggleSection('savedTargets')}
-            className="w-full px-3 py-2 bg-slate-900/90 text-left flex items-center justify-between font-semibold text-slate-200 hover:bg-slate-800 transition-colors"
+            className="w-full px-3 py-2 bg-slate-50 text-left flex items-center justify-between font-semibold text-slate-700 hover:bg-slate-100 transition-colors"
           >
             <span className="flex items-center gap-2 font-mono text-[11px]">
-              <Bookmark className="w-3.5 h-3.5 text-emerald-400" />
+              <Bookmark className="w-3.5 h-3.5 text-emerald-600" />
               <span>Saved Targets (Wishlist)</span>
             </span>
             {sectionOpen.savedTargets ? <ChevronUp className="w-3.5 h-3.5 text-slate-400" /> : <ChevronDown className="w-3.5 h-3.5 text-slate-400" />}
@@ -312,13 +312,13 @@ export const ControlPanelSidebar: React.FC<ControlPanelSidebarProps> = ({
         </div>
 
         {/* Accordion 5: Analysis Tools */}
-        <div className="border border-slate-800 rounded bg-slate-950/60 overflow-hidden">
+        <div className="border border-slate-200 rounded bg-white overflow-hidden shadow-xs">
           <button
             onClick={() => toggleSection('analysisTools')}
-            className="w-full px-3 py-2 bg-slate-900/90 text-left flex items-center justify-between font-semibold text-slate-200 hover:bg-slate-800 transition-colors"
+            className="w-full px-3 py-2 bg-slate-50 text-left flex items-center justify-between font-semibold text-slate-700 hover:bg-slate-100 transition-colors"
           >
             <span className="flex items-center gap-2 font-mono text-[11px]">
-              <SplitSquareVertical className="w-3.5 h-3.5 text-blue-400" />
+              <SplitSquareVertical className="w-3.5 h-3.5 text-blue-500" />
               <span>Analysis Tools</span>
             </span>
             {sectionOpen.analysisTools ? <ChevronUp className="w-3.5 h-3.5 text-slate-400" /> : <ChevronDown className="w-3.5 h-3.5 text-slate-400" />}
@@ -328,7 +328,7 @@ export const ControlPanelSidebar: React.FC<ControlPanelSidebarProps> = ({
             <div className="p-3 space-y-2">
               <button
                 onClick={() => setCurrentRoute('data-validation')}
-                className="w-full bg-blue-900 hover:bg-blue-800 text-white font-semibold py-1.5 px-3 rounded text-xs flex items-center justify-center gap-2 transition-colors shadow-xs"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-1.5 px-3 rounded text-xs flex items-center justify-center gap-2 transition-colors shadow-xs"
               >
                 <SplitSquareVertical className="w-3.5 h-3.5" />
                 <span>Multispectral Compare</span>
@@ -336,9 +336,9 @@ export const ControlPanelSidebar: React.FC<ControlPanelSidebarProps> = ({
 
               <button
                 onClick={() => setCurrentRoute('evidence-explorer')}
-                className="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold py-1.5 px-3 rounded text-xs flex items-center justify-center gap-2 transition-colors"
+                className="w-full bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-semibold py-1.5 px-3 rounded text-xs flex items-center justify-center gap-2 transition-colors"
               >
-                <Database className="w-3.5 h-3.5 text-emerald-400" />
+                <Database className="w-3.5 h-3.5 text-emerald-600" />
                 <span>SQL Database Console</span>
               </button>
             </div>

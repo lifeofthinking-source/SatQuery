@@ -190,11 +190,15 @@ export const RealTimeGoogleMap: React.FC<RealTimeGoogleMapProps> = ({
     const map = L.map(containerRef.current, {
       center: [initialLat, initialLng],
       zoom: initialZoom,
-      zoomControl: false,
+      zoomControl: true,
+      scrollWheelZoom: true,
       attributionControl: false
     });
 
     leafletMapRef.current = map;
+
+    // Position zoom control at bottom-left away from the AOI panel
+    map.zoomControl.setPosition('bottomleft');
 
     // 1. High-Resolution Satellite Base Layer (Esri World Imagery)
     L.tileLayer(
@@ -560,38 +564,38 @@ export const RealTimeGoogleMap: React.FC<RealTimeGoogleMapProps> = ({
   };
 
   return (
-    <div className="relative w-full h-full min-h-[560px] bg-slate-950 overflow-hidden flex flex-col select-none">
-      {/* Target Coords HUD (Top-Left of map, exact match to user's reference image!) */}
-      <div className="absolute top-3 left-3 z-30 bg-black/85 text-white font-mono text-[11px] px-3.5 py-2 rounded border border-slate-700 shadow-2xl backdrop-blur-md pointer-events-none">
+    <div className="relative w-full h-full min-h-[560px] bg-slate-100 overflow-hidden flex flex-col select-none">
+      {/* Target Coords HUD (Top-Left) — Light Theme */}
+      <div className="absolute top-3 left-3 z-30 bg-white/95 text-slate-800 font-mono text-[11px] px-3.5 py-2 rounded border border-slate-300 shadow-md backdrop-blur-md pointer-events-none">
         <div className="text-[9px] uppercase tracking-wider text-slate-400 font-bold mb-0.5">
           TARGET COORDS
         </div>
         <div className="flex items-center gap-1.5 leading-snug">
-          <span className="text-slate-400">Lat:</span>
-          <span className="text-emerald-400 font-bold font-mono">
+          <span className="text-slate-500">Lat:</span>
+          <span className="text-blue-700 font-bold font-mono">
             {targetCoords.lat.toFixed(5)}
           </span>
         </div>
         <div className="flex items-center gap-1.5 leading-snug">
-          <span className="text-slate-400">Lon:</span>
-          <span className="text-emerald-400 font-bold font-mono">
+          <span className="text-slate-500">Lon:</span>
+          <span className="text-blue-700 font-bold font-mono">
             {targetCoords.lng.toFixed(5)}
           </span>
         </div>
       </div>
 
-      {/* Floating Drawing Tools HUD (Top Right of map area) */}
+      {/* Floating Drawing Tools HUD (Top Right) — Light Theme */}
       <div className="absolute top-3 right-3 z-20 flex flex-col gap-2">
-        <div className="bg-slate-900/90 border border-slate-700/80 rounded-lg p-2.5 shadow-2xl backdrop-blur-md space-y-2 text-xs text-white max-w-xs">
-          <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold">
+        <div className="bg-white/95 border border-slate-300 rounded-lg p-2.5 shadow-md backdrop-blur-md space-y-2 text-xs text-slate-800 max-w-xs">
+          <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-slate-500 font-semibold">
             <span>AOI Tools</span>
-            <span className="text-blue-400 text-[9px]">EPSG:4326</span>
+            <span className="text-blue-600 text-[9px]">EPSG:4326</span>
           </div>
 
           {!isDrawingPolygon ? (
             <button
               onClick={startDrawing}
-              className="w-full px-2.5 py-1.5 rounded text-xs font-semibold bg-blue-900 hover:bg-blue-800 text-white flex items-center justify-center gap-1.5 transition-colors shadow-xs"
+              className="w-full px-2.5 py-1.5 rounded text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-1.5 transition-colors shadow-xs"
             >
               <Pencil className="w-3 h-3" />
               <span>Draw AOI Polygon</span>
@@ -600,14 +604,14 @@ export const RealTimeGoogleMap: React.FC<RealTimeGoogleMapProps> = ({
             <div className="flex gap-1.5">
               <button
                 onClick={completeDrawing}
-                className="flex-1 px-2 py-1 rounded text-xs font-semibold bg-emerald-700 hover:bg-emerald-600 text-white flex items-center justify-center gap-1 shadow-xs"
+                className="flex-1 px-2 py-1 rounded text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center gap-1 shadow-xs"
               >
                 <CheckCircle2 className="w-3 h-3" />
                 <span>Save ({drawingPoints.length})</span>
               </button>
               <button
                 onClick={cancelDrawing}
-                className="px-2 py-1 rounded text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700"
+                className="px-2 py-1 rounded text-xs font-medium bg-white hover:bg-slate-100 text-slate-600 border border-slate-300"
               >
                 Cancel
               </button>
@@ -615,9 +619,9 @@ export const RealTimeGoogleMap: React.FC<RealTimeGoogleMapProps> = ({
           )}
 
           {drawnPolygon && (
-            <div className="flex items-center justify-between bg-blue-950/80 border border-blue-700 px-2 py-1 rounded text-[11px] font-mono text-blue-300">
+            <div className="flex items-center justify-between bg-blue-50 border border-blue-200 px-2 py-1 rounded text-[11px] font-mono text-blue-700">
               <span>{drawnPolygon.areaKm2} km²</span>
-              <button onClick={clearPolygon} className="text-red-400 hover:text-red-300 font-bold ml-1">
+              <button onClick={clearPolygon} className="text-red-500 hover:text-red-700 font-bold ml-1">
                 ✕
               </button>
             </div>
@@ -633,31 +637,6 @@ export const RealTimeGoogleMap: React.FC<RealTimeGoogleMapProps> = ({
         style={{ minHeight: '500px', width: '100%', height: '100%' }}
       />
 
-      {/* Bottom GIS Scale & Legend Strip */}
-      <div className="bg-slate-950/95 text-slate-400 px-4 py-1.5 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4 text-[10px] z-30 backdrop-blur-md font-mono">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-xs bg-emerald-500 inline-block shadow-[0_0_6px_#10b981]" />
-            <span className="text-slate-300">Real-Time Reticle Target</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-xs bg-blue-600/30 border border-blue-500 inline-block" />
-            <span className="text-slate-300">User AOI Polygon</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-xs bg-red-600/40 border border-red-500 inline-block" />
-            <span className="text-slate-300">DeltaView Change Mask</span>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 text-slate-400">
-          <span>ESRI WORLD IMAGERY (HIGH-RES)</span>
-          <span>·</span>
-          <span>SENTINEL-2 (10m)</span>
-          <span>·</span>
-          <span>WGS84</span>
-        </div>
-      </div>
     </div>
   );
 };
